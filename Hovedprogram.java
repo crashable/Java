@@ -9,7 +9,7 @@ public class Hovedprogram {
       abel.addNodeToClusterfuck(1024, 2);
     }
 */
-
+//Coolios.
     try {
       Regneklynge abel = new Regneklynge("regneklynge2.txt");
       System.out.println("Noder med minst 32 GB: " + abel.noderMedNokMinne(32));
