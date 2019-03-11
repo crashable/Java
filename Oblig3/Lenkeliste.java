@@ -7,7 +7,7 @@ public class Lenkeliste<T> implements Liste<T> {
     Node(T x) {data = x;}
   }
 
-  private Node start = null;
+  public Node start = null;
 
   public int stoerrelse() {
     return size;
