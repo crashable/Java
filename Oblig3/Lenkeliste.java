@@ -14,7 +14,7 @@ public class Lenkeliste<T> implements Liste<T> {
   }
 
   public void leggTil(T x) {
-    //lett til bakerst
+    //legg til bakerst
     Node p;
     if (size == 0) {
       p = new Node(x);
