@@ -1,6 +1,6 @@
 public class Lenkeliste<T> implements Liste<T> {
   int size = 0;
-  Iterator<T> iterator();
+  public Iterator<T> iterator() {}
 
   class Node {
     Node neste = null;
@@ -8,22 +8,23 @@ public class Lenkeliste<T> implements Liste<T> {
     Node(T x) {data = x;}
   }
 
-  class LenkelisteIterator extends Iterator<T> {
+  class LenkelisteIterator implements Iterator<T> {
     //This is hella confusing;
-    boolean hasNext() {
+    public boolean hasNext() {
       //for (E e : elementliste) {
         //return True;
       //}
     }
-    T next() {
+    public T next() {
+
     }
   //  void remove();
   }
 
-  public Iterator iterator() {
+/*  public Iterator iterator() {
     return new LenkelisteIterator();
   }
-
+*/
   public Node start = null;
 
   public int stoerrelse() {
