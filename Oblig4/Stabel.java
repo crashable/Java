@@ -1,4 +1,4 @@
-public class Stabel<T> extends Lenkeliste<T> {
+public   class Stabel<T> extends Lenkeliste<T> {
   public void leggPaa(T x) {
     leggTil(x);
   }

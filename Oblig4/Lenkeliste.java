@@ -16,6 +16,7 @@ public class Lenkeliste<T> implements Liste<T> {
 
   class LenkelisteIterator implements Iterator<T> {
     //This is hella confusing;
+    //Stuff is taken from 27.02 lecture, check if correct.
     private Lenkeliste<T> testListe;
     private int indeks = 0;
     public LenkelisteIterator(Lenkeliste<T> test) {
@@ -24,11 +25,9 @@ public class Lenkeliste<T> implements Liste<T> {
 
     public boolean hasNext() {
       return indeks < testListe.stoerrelse();
-      //return true; //Temporary.
     }
     public T next() {
       return testListe.hent(indeks++);
-      //return null; //Temporary.
     }
   //  void remove();
   }
