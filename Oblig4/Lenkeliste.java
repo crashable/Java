@@ -1,6 +1,7 @@
+import java.util.Iterator;
+
 public class Lenkeliste<T> implements Liste<T> {
   int size = 0;
-  public Iterator<T> iterator() {}
 
   class Node {
     Node neste = null;
@@ -8,23 +9,31 @@ public class Lenkeliste<T> implements Liste<T> {
     Node(T x) {data = x;}
   }
 
+  public Iterator iterator() {
+    //return new LenkelisteIterator(); //Dunno how to return this.
+    return null;
+  }
+
   class LenkelisteIterator implements Iterator<T> {
     //This is hella confusing;
+    private Lenkeliste<T> testListe;
+    private int indeks = 0;
+    public LenkelisteIterator(Lenkeliste<T> test) {
+      testListe = test;
+    }
+
     public boolean hasNext() {
-      //for (E e : elementliste) {
-        //return True;
-      //}
+      return indeks < testListe.stoerrelse();
+      //return true; //Temporary.
     }
     public T next() {
-
+      return testListe.hent(indeks++);
+      //return null; //Temporary.
     }
   //  void remove();
   }
 
-/*  public Iterator iterator() {
-    return new LenkelisteIterator();
-  }
-*/
+
   public Node start = null;
 
   public int stoerrelse() {

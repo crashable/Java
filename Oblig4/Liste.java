@@ -1,3 +1,4 @@
+import java.util.Iterator;
 interface Liste<T> extends Iterable<T> {
     public int stoerrelse();
     public void leggTil(int pos, T x);
@@ -6,5 +7,5 @@ interface Liste<T> extends Iterable<T> {
     public T hent(int pos);
     public T fjern(int pos);
     public T fjern();
-    //public Iterator<T> iterator();
+    public Iterator<T> iterator();
 }
