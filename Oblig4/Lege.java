@@ -1,8 +1,16 @@
-public class Lege {
+public class Lege<T extends Comparable<Resept>> {
+//public class Lege implements Comparable<Resept> {
   int ID = 0;
   static int counter = 0;
   String legeNavn;
   //Resept resept;
+  Lenkeliste<Resept> utskrevedeResepter;
+
+  Lenkeliste<T> hentLenkeliste(Lenkeliste<T> liste) {
+    //Dunno if necessary yet.
+    Lenkeliste<T> test = liste;
+    return test;
+  }
   public Lege(String lnvn) {
     legeNavn = lnvn;
     ID = counter;
@@ -18,6 +26,40 @@ public class Lege {
     if(legemiddel instanceof PreparatA) {
       throw new UlovligUtskrift(this, legemiddel);
     }
-    return new Militaerresepter(legemiddel, this, pasient, reit);
+    Militaerresepter milit = new Militaerresepter(legemiddel, this, pasient, reit);
+    utskrevedeResepter.leggTil(milit);
+    return milit;
   }
+  /*public Resept skrivHvitResept(Legemiddel legemiddel, Pasient pasient, int reit) throws UlovligUtskrift {
+    if(legemiddel instanceof PreparatA) {
+      throw new UlovligUtskrift(this, legemiddel);
+    }
+    HvitResept hvit = new HvitResept(legemiddel, this, pasient, reit);
+    utskrevedeResepter.leggTil(hvit);
+    return hvit;
+  }
+  public Resept skrivBlaaResept(Legemiddel legemiddel, Pasient pasient, int reit) throws UlovligUtskrift {
+    if(legemiddel instanceof PreparatA) {
+      throw new UlovligUtskrift(this, legemiddel);
+    }
+    Blaaresepter blaa = new Blaaresepter(legemiddel, this, pasient, reit);
+    utskrevedeResepter.leggTil(blaa);
+    return blaa;
+  }
+  public Resept skrivMilitaerResept(Legemiddel legemiddel, Pasient pasient, int reit) throws UlovligUtskrift {
+    if(legemiddel instanceof PreparatA) {
+      throw new UlovligUtskrift(this, legemiddel);
+    }
+    Militaerresepter milit = new Militaerresepter(legemiddel, this, pasient, reit);
+    utskrevedeResepter.leggTil(milit);
+    return milit;
+  }
+  public Resept skrivPResept(Legemiddel legemiddel, Pasient pasient, int reit) throws UlovligUtskrift {
+    if(legemiddel instanceof PreparatA) {
+      throw new UlovligUtskrift(this, legemiddel);
+    }
+    Presepter pres = new Presepter(legemiddel, this, pasient, reit);
+    utskrevedeResepter.leggTil(pres);
+    return pres;
+  }*/
 }
