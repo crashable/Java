@@ -3,14 +3,12 @@ import java.util.Iterator;
 public class Lenkeliste<T> implements Liste<T> {
   int size = 0;
 
-  }
-
   public Iterator<T> iterator() {
     System.out.println("Test 1");
-    Lenkeliste test = new Lenkeliste<T>;
     System.out.println("Test 2");
-    return new LenkelisteIterator(Lenkeliste<T> test); //Dunno how to return this.
+    //return new LenkelisteIterator(Lenkeliste<T> (this); //Dunno how to return this.
     System.out.println("Test 3");
+    return null;
   }
 
   class LenkelisteIterator implements Iterator<T> {
@@ -21,7 +19,6 @@ public class Lenkeliste<T> implements Liste<T> {
     public LenkelisteIterator(Lenkeliste<T> test) {
       testListe = test;
     }
-
     public boolean hasNext() {
       return indeks < testListe.stoerrelse();
     }
@@ -35,7 +32,7 @@ public class Lenkeliste<T> implements Liste<T> {
     Node neste = null;
     T data;
     Node(T x) {data = x;}
-
+  }
   public Node start = null;
 
   public int stoerrelse() {
