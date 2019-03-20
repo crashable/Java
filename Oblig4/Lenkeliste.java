@@ -4,11 +4,7 @@ public class Lenkeliste<T> implements Liste<T> {
   int size = 0;
 
   public Iterator<T> iterator() {
-    System.out.println("Test 1");
-    System.out.println("Test 2");
-    //return new LenkelisteIterator(Lenkeliste<T> (this); //Dunno how to return this.
-    System.out.println("Test 3");
-    return null;
+    return new LenkelisteIterator(this); //Dunno how to return this.
   }
 
   class LenkelisteIterator implements Iterator<T> {
