@@ -25,75 +25,68 @@ public class Legesystem{
 
             // Legger til alle pasientene i filen
             if(info[1].compareTo("Pasienter") == 0){
+                Lenkeliste<Pasient> pasienter = new Lenkeliste<Pasient>();
                 while(scanner.hasNextLine()) {
                     innlest = scanner.nextLine();
-
-                    //Om vi er ferdig med å legge til pasienter, bryt whileløkken,
-                    //slik at vi fortsetter til koden for å legge til legemiddler
+                    String[] inf = innlest.split(" ");
+                    pasienter.leggTil(new Pasient(inf[0], inf[1]));
                     if(innlest.charAt(0) == '#'){
                         break;
                     }
-                    //
-                    //MERK:  Her må du legge til pasienten i en lenkeliste
-                    //
                 }
-
             }
             //Legger inn Legemidlene
             else if(info[1].compareTo("Legemidler") == 0){
+                Lenkeliste<Legemiddel> legemidler = new Lenkeliste<Legemiddel>();
                 while(scanner.hasNextLine()){
                     innlest = scanner.nextLine();
-                    //Om vi er ferdig med å legge til legemidler, bryt whileløkken,
-                    //slik at vi fortsetter til koden for å legge til leger
                     if(innlest.charAt(0) == '#'){
                         break;
                     }
                     String[] legemiddel = innlest.split(", ");
-                    if(legemiddel[1].compareTo("a") == 0){
-                        //
-                        //MERK:  Her må du legge til et PreparatA i en lenkeliste
-                        //
+                    if(legemiddel[1].compareTo("a") == 0) {
+                        double prs = Double.parseDouble(legemiddel[2]);
+                        double vs = Double.parseDouble(legemiddel[3]);
+                        int srk = Integer.parseInt(legemiddel[4]);
+                        legemidler.leggTil(new PreparatA(legemiddel[0], prs, vs, srk));
                     }
                     else if(legemiddel[1].compareTo("b") == 0){
-                        //
-                        //MERK:  Her må du legge til et PreparatB i en lenkeliste
-                        //
+                        double prs = Double.parseDouble(legemiddel[2]);
+                        double vs = Double.parseDouble(legemiddel[3]);
+                        int srk = Integer.parseInt(legemiddel[4]);
+                        legemidler.leggTil(new PreparatB(legemiddel[0], prs, vs, srk));
                     }else if (legemiddel[1].compareTo("c") == 0){
-                        //
-                        //MERK:  Her må du legge til et PreparatC i en lenkeliste
-                        //
+                        double prs = Double.parseDouble(legemiddel[2]);
+                        double vs = Double.parseDouble(legemiddel[3]);
+                        legemidler.leggTil(new PreparatC(legemiddel[0], prs, vs));
                     }
-
                 }
             }
             //Legger inn leger
             else if(info[1].compareTo("Leger") == 0){
+                Lenkeliste<Lege> leger = new Lenkeliste<Lege>();
                 while(scanner.hasNextLine()){
                     innlest = scanner.nextLine();
-                    //Om vi er ferdig med å legge til leger, bryt whileløkken,
-                    //slik at vi fortsetter til koden for å legge til resepter
                     if(innlest.charAt(0) == '#'){
                         break;
                     }
                     info = innlest.split(", ");
                     int kontrollid = Integer.parseInt(info[1]);
                     if(kontrollid == 0){
-                        //
-                        //MERK:  Her må du legge til et lege objekt i en sortert lenkeliste
-                        //
+                        leger.leggTil(new Lege(info[0]));
                     }else{
-                        //
-                        //MERK:  Her må du legge til et spesialist objekt i en sortert lenkeliste
-                        //
+                        leger.leggTil(new Spesialist(info[0], kontrollid));
                     }
                 }
 
             }
             //Legger inn Resepter
             else if(info[1].compareTo("Resepter") == 0){
+                Lenkeliste<Resept> resepter = new Lenkeliste<Resept>();
                 while(scanner.hasNextLine()){
                     innlest = scanner.nextLine();
                     info = innlest.split(", ");
+                    //if()
                     //
                     // Her må du finne legen, legemiddelet, og pasienten som ligger
                     // i lenkelistene utifra informasjonen.
