@@ -86,7 +86,10 @@ public class Legesystem{
                 while(scanner.hasNextLine()){
                     innlest = scanner.nextLine();
                     info = innlest.split(", ");
-                    //if()
+                    if(info[0].compareTo("0")) {
+                      //I'm a bit stuck on how to proceed, for-loop? if's? Combo? Bedtime.
+                        resepter.leggTil(new Resept(legemidler[0]))
+                    }
                     //
                     // Her må du finne legen, legemiddelet, og pasienten som ligger
                     // i lenkelistene utifra informasjonen.
