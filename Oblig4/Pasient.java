@@ -12,4 +12,7 @@ public class Pasient {
     counter++;
   }
 
+  public int getID() {
+    return ID;
+  }
 }
