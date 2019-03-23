@@ -3,13 +3,19 @@ import java.io.*;
 
 public class Legesystem{
     // Opprett lister som lagrer objektene i legesystemet
+    public static Lenkeliste<Pasient> pasienter;
+    public static Lenkeliste<Legemiddel> legemidler;
+    public static Lenkeliste<Lege> leger;
+    public static Lenkeliste<Resept> resepter;
+
     public static void main(String[] args){
+      //Lenke
     }
     public static void lesFraFil(File fil){
-        Lenkeliste<Pasient> pasienter = new Lenkeliste<Pasient>();
-        Lenkeliste<Legemiddel> legemidler = new Lenkeliste<Legemiddel>();
-        Lenkeliste<Lege> leger = new Lenkeliste<Lege>();
-        Lenkeliste<Resept> resepter = new Lenkeliste<Resept>();
+        pasienter = new Lenkeliste<Pasient>();
+        legemidler = new Lenkeliste<Legemiddel>();
+        leger = new Lenkeliste<Lege>();
+        resepter = new Lenkeliste<Resept>();
 
         Scanner scanner = null;
         try{
@@ -124,6 +130,7 @@ public class Legesystem{
         System.out.println("9: Meny");
         System.out.println("0: Avslutt");
         System.out.println();
+        System.out.println(resepter);
     }
     public String errorMsg() {
         return "Error: Input has to be an integer.";
