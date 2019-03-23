@@ -268,6 +268,8 @@ public class Legesystem{
         //Statistikk om mulig misbruk av narkotika skal vises på følgende måte:
           //List opp navnene på alle leger (i alfabetisk rekkefølge) som har skrevet ut
             //minst en resept på narkotiske legemidler, og antallet slike resepter per lege
+        System.out.println("Leger som her skrevet ut resepter på narkotiske legemidler: ");
+        
           //List opp navnene på alle pasienter som har minst en gyldig resept på
             //narkotiske legemidler, og for disse, skriv ut antallet per pasient.
 
