@@ -115,37 +115,46 @@ public class Legesystem{
     }
     public void skrivMeny(){
         System.out.println();
-        System.out.println("MENY");
+        System.out.println("--- MENY ---");
         System.out.println("1: Fullstending oversikt");
         System.out.println("2: Opprett eller legg til nye elementer");
         System.out.println("3: Bruk resept");
-        System.out.println("4: Statisktikk for nerder");
+        System.out.println("4: Statistikk for nerder");
         //System.out.println("5: Skriv all data til fil");
-        System.out.println("5: Avslutt");
+        System.out.println("9: Meny");
+        System.out.println("0: Avslutt");
         System.out.println();
     }
-    Scanner scanner = new Scanner(System.in);
+    public String errorMsg() {
+        return "Error: Input has to be an integer.";
+    }
     public void kommandoloekke() {
+        Scanner scanner = new Scanner(System.in);
         skrivMeny();
         int valg;
         do {
-            System.out.print("Valg (0 for Meny): ");
+            System.out.print("Valg: ");
             valg = scanner.nextInt();
+            /*try {
+                valg = scanner.nextInt();
+            } catch(NumberFormatException e) {
+                e.errorMsg();
+            }*/
             switch(valg) {
-                case 1: System.out.println("Skriver ut fullstendig oversikt");
+                case 1: System.out.println("Skriver ut fullstendig oversikt.");
                         skrivUt();  break;
-                case 2: System.out.println("Opprett eller legg til nye elemeter");
+                case 2: System.out.println("Opprett eller legg til nye elemeter.");
                         endreTing(); break;
-                case 3: System.out.println("Bruker resept");
+                case 3: System.out.println("Bruker resept.");
                         brukResept(); break;
-                case 4: System.out.println("Statistikk for nerder");
+                case 4: System.out.println("Statistikk for nerder.");
                         statisktikk(); break;
-                case 5: System.out.println("Programmet avslutter");
+                case 9: skrivMeny(); break;
+                case 0: System.out.println("Programmet avsluttes.");
                         System.out.println(); break;
-                case 0: skrivMeny(); break;
                 default: System.out.println("Du tastet feil");
             }
-        } while (!(valg == 5));
+        } while (!(valg == 0));
     }
     public void skrivUt() {
         //Prints out all elements, doctors prints out in alphabetical order, use compareTo().
