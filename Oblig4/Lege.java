@@ -3,14 +3,7 @@ public class Lege<T extends Comparable<Resept>> {
   int ID = 0;
   static int counter = 0;
   String legeNavn;
-  //Resept resept;
-  Lenkeliste<Resept> utskrevedeResepter;
 
-  Lenkeliste<T> hentLenkeliste(Lenkeliste<T> liste) {
-    //Dunno if necessary yet.
-    Lenkeliste<T> test = liste;
-    return test;
-  }
   public Lege(String lnvn) {
     legeNavn = lnvn;
     ID = counter;
@@ -27,7 +20,6 @@ public class Lege<T extends Comparable<Resept>> {
       throw new UlovligUtskrift(this, legemiddel);
     }
     Militaerresepter milit = new Militaerresepter(legemiddel, this, pasient, reit);
-    utskrevedeResepter.leggTil(milit);
     return milit;
   }
   /*public Resept skrivHvitResept(Legemiddel legemiddel, Pasient pasient, int reit) throws UlovligUtskrift {
