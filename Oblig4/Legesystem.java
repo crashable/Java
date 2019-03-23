@@ -3,7 +3,6 @@ import java.io.*;
 
 public class Legesystem{
     // Opprett lister som lagrer objektene i legesystemet
-
     public static void main(String[] args){
     }
     public static void lesFraFil(File fil){
@@ -125,31 +124,50 @@ public class Legesystem{
         System.out.println("5: Avslutt");
         System.out.println();
     }
-    In tast = new In();
-    public void kommandoloekke(){
-    skrivMeny();
-    int valg;
-    do {
-        System.out.print("\nValg (0 for Meny): ");
-        valg = tast.inInt();
-        switch(valg){
-            case 5: System.out.println("Programmet avslutter");
-                    System.out.println(); break;
-            /*case 1: registrerDeltager(); break;
-            case 2: trekning(); break;
-            case 3: listDeltagere(); break;
-            case 4: if( !trukket ) break;
-                    if( foersteOmgang == null )
-                        foersteOmgang = new Omgang( deltager, true );
-                    foersteOmgang.kommandoloekke(); break;
-            case 5: if( foersteOmgang == null ) break;
-                    if( andreOmgang == null )
-                        andreOmgang = new Omgang( reverser(foersteOmgang.rekkeflg), false );
-                    andreOmgang.kommandoloekke(); break;
-            case 6: autogenerer(); break;
-            case 9: skrivMeny(); break;
-            default: System.out.println("Du tastet feil");*/
-        }
-    } while (!(valg == 0));
-}
+    Scanner scanner = new Scanner(System.in);
+    public void kommandoloekke() {
+        skrivMeny();
+        int valg;
+        do {
+            System.out.print("Valg (0 for Meny): ");
+            valg = scanner.nextInt();
+            switch(valg) {
+                case 1: System.out.println("Skriver ut fullstendig oversikt");
+                        skrivUt();  break;
+                case 2: System.out.println("Opprett eller legg til nye elemeter");
+                        endreTing(); break;
+                case 3: System.out.println("Bruker resept");
+                        brukResept(); break;
+                case 4: System.out.println("Statistikk for nerder");
+                        statisktikk(); break;
+                case 5: System.out.println("Programmet avslutter");
+                        System.out.println(); break;
+                case 0: skrivMeny(); break;
+                default: System.out.println("Du tastet feil");
+            }
+        } while (!(valg == 5));
+    }
+    public void skrivUt() {
+        //Prints out all elements, doctors prints out in alphabetical order, use compareTo().
+    }
+    public void endreTing() {
+        //Adds either lege, pasient, legemiddel or resept(through lege skrivResept()) (if function)
+        //The action has to be checked possible before object creation.
+        //Any errors should be informed.
+        //Use iterator to look for info in lists.
+        //Exit back to menu if wrong input, NumberFormatException.
+    }
+    public void brukResept() {
+        //Follow the user interaction example for the proper if functions.
+    }
+    public void statisktikk() {
+        //Totalt antall utskrevne resepter på vanedannende legemidler.
+        //Totalt antall utskrevne resepter på narkotiske legemidler.
+        //Statistikk om mulig misbruk av narkotika skal vises på følgende måte:
+          //List opp navnene på alle leger (i alfabetisk rekkefølge) som har skrevet ut
+            //minst en resept på narkotiske legemidler, og antallet slike resepter per lege
+          //List opp navnene på alle pasienter som har minst en gyldig resept på
+            //narkotiske legemidler, og for disse, skriv ut antallet per pasient.
+
+    }
 }
