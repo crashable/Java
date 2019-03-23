@@ -3,11 +3,15 @@ public class Spesialist extends Lege implements Godkjenningsfritak {
   public Spesialist(String lnvn, int kID) {
     super(lnvn);
     this.kontrollID = kID;
+    counter++;
   }
   public int hentKontrollID() {
     return kontrollID;
   }
   public Resept skrivResept(Legemiddel legemiddel, Pasient pasient, int reit) throws UlovligUtskrift {
+    if (legemiddel instanceof PreparatA) {
+      antResept++;
+    }
     return new Blaaresepter(legemiddel, this, pasient, reit);
   }
 }

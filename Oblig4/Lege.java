@@ -3,6 +3,7 @@ public class Lege<T extends Comparable<Resept>> {
   int ID = 0;
   static int counter = 0;
   String legeNavn;
+  static int antResept = 0;
 
   public Lege(String lnvn) {
     legeNavn = lnvn;
