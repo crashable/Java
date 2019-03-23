@@ -156,7 +156,7 @@ public class Legesystem{
                 case 3: System.out.println("Bruker resept.");
                         brukResept(); break;
                 case 4: System.out.println("Statistikk for nerder.");
-                        statisktikk(); break;
+                        statistikk(); break;
                 case 9: System.out.println("Programmet avsluttes.");
                         System.out.println(); break;
                 case 0: skrivMeny(); break;
@@ -249,9 +249,22 @@ public class Legesystem{
         }
     }
 
-    public void statisktikk() {
+    public void statistikk() {
         //Totalt antall utskrevne resepter på vanedannende legemidler.
+        int ant = 0;
+        for (Legemiddel e : legemidler) {
+            if (e instanceof PreparatB) {
+                ant++;
+            }
+        }
+        System.out.println("Totalt antall utskrevne resepter pa vaanedannende legemidler: " + ant);
         //Totalt antall utskrevne resepter på narkotiske legemidler.
+        for (Legemiddel e : legemidler) {
+            if (e instanceof PreparatA) {
+                ant++;
+            }
+        }
+        System.out.println("Totalt antall utskrevne resepter pa vaanedannende legemidler: " + ant);
         //Statistikk om mulig misbruk av narkotika skal vises på følgende måte:
           //List opp navnene på alle leger (i alfabetisk rekkefølge) som har skrevet ut
             //minst en resept på narkotiske legemidler, og antallet slike resepter per lege
