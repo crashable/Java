@@ -127,13 +127,15 @@ public class Legesystem{
         System.out.println("3: Bruk resept");
         System.out.println("4: Statistikk for nerder");
         //System.out.println("5: Skriv all data til fil");
-        System.out.println("9: Meny");
-        System.out.println("0: Avslutt");
+        System.out.println("9: Avslutt");
+        System.out.println("0: Meny");
         System.out.println();
     }
+
     public String errorMsg() {
         return "Error: Input has to be an integer.";
     }
+
     public void kommandoloekke() {
         Scanner scanner = new Scanner(System.in);
         skrivMeny();
@@ -155,13 +157,14 @@ public class Legesystem{
                         brukResept(); break;
                 case 4: System.out.println("Statistikk for nerder.");
                         statisktikk(); break;
-                case 9: skrivMeny(); break;
-                case 0: System.out.println("Programmet avsluttes.");
+                case 9: System.out.println("Programmet avsluttes.");
                         System.out.println(); break;
+                case 0: skrivMeny(); break;
                 default: System.out.println("Du tastet feil");
             }
-        } while (!(valg == 0));
+        } while (!(valg == 9));
     }
+
     public void skrivUt() {
         //Prints out all elements, doctors prints out in alphabetical order, use compareTo().
         pasienter.iterator();
@@ -193,9 +196,9 @@ public class Legesystem{
         for (Resept e : resepter) {
             System.out.println(e.hentLegemiddel().hentNavn() + ", " + e.hentLege().hentNavn() + ", PasientID: " + e.hentPasientID() + ", Reit: " + e.hentReit());
         }
-
-
+        System.out.println();
     }
+
     public void endreTing() {
         //Adds either lege, pasient, legemiddel or resept(through lege skrivResept()) (if function)
         //The action has to be checked possible before object creation.
@@ -203,9 +206,49 @@ public class Legesystem{
         //Use iterator to look for info in lists.
         //Exit back to menu if wrong input, NumberFormatException.
     }
+
     public void brukResept() {
         //Follow the user interaction example for the proper if functions.
+        System.out.println("Hvilken pasient vil du se resepter for?");
+        for (Pasient e : pasienter) {
+            System.out.println(e.getID() + ": " + e.navn + "(fnr: " + e.foedselsnummer + ")");
+        }
+        Scanner scanner = new Scanner(System.in);
+        int valg;
+        Pasient pasient = null;
+        System.out.print("> ");
+        valg = scanner.nextInt();
+        switch(valg) {
+            case 9: System.out.println("Tilbake til meny.");
+                    System.out.println(); break;
+            default: System.out.println();
+                    System.out.println("Valgt pasient: " + pasienter.hent(valg).navn);
+                    pasient = pasienter.hent(valg);
+                    break;
+        }
+        System.out.println("Hvilken resept vil du bruke?");
+        for (Resept e : resepter) {
+            System.out.println(e.hentID() + ": " + e.hentLegemiddel().hentNavn() + "(Reit: " + e.hentReit() + ")");
+        }
+        Resept resept = null;
+        System.out.print("> ");
+        valg = scanner.nextInt();
+        switch(valg) {
+            case 9: System.out.println("Tilbake til meny.");
+                    System.out.println(); break;
+            default: System.out.println();
+                    resept = resepter.hent(valg);
+                    System.out.println("Valgt resept: " + resept.hentLegemiddel().hentNavn());
+                    if (resept.hentReit() == 0) {
+                        System.out.println("Kunne ikke bruke resept paa " + resept.hentLegemiddel().hentNavn() + ". Ingen gjenvaerende reit.");
+                    } else {
+                        resept.bruk();
+                        System.out.println("Brukte resept paa " + resept.hentLegemiddel().hentNavn() + ". Antall gjenvaerende reit: " + resept.hentReit());
+                    }
+                    break;
+        }
     }
+
     public void statisktikk() {
         //Totalt antall utskrevne resepter på vanedannende legemidler.
         //Totalt antall utskrevne resepter på narkotiske legemidler.
