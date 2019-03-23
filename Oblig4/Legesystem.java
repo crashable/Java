@@ -114,4 +114,42 @@ public class Legesystem{
             }
         }
     }
+    public void skrivMeny(){
+        System.out.println();
+        System.out.println("MENY");
+        System.out.println("1: Fullstending oversikt");
+        System.out.println("2: Opprett eller legg til nye elementer");
+        System.out.println("3: Bruk resept");
+        System.out.println("4: Statisktikk for nerder");
+        //System.out.println("5: Skriv all data til fil");
+        System.out.println("5: Avslutt");
+        System.out.println();
+    }
+    In tast = new In();
+    public void kommandoloekke(){
+    skrivMeny();
+    int valg;
+    do {
+        System.out.print("\nValg (0 for Meny): ");
+        valg = tast.inInt();
+        switch(valg){
+            case 5: System.out.println("Programmet avslutter");
+                    System.out.println(); break;
+            /*case 1: registrerDeltager(); break;
+            case 2: trekning(); break;
+            case 3: listDeltagere(); break;
+            case 4: if( !trukket ) break;
+                    if( foersteOmgang == null )
+                        foersteOmgang = new Omgang( deltager, true );
+                    foersteOmgang.kommandoloekke(); break;
+            case 5: if( foersteOmgang == null ) break;
+                    if( andreOmgang == null )
+                        andreOmgang = new Omgang( reverser(foersteOmgang.rekkeflg), false );
+                    andreOmgang.kommandoloekke(); break;
+            case 6: autogenerer(); break;
+            case 9: skrivMeny(); break;
+            default: System.out.println("Du tastet feil");*/
+        }
+    } while (!(valg == 0));
+}
 }
