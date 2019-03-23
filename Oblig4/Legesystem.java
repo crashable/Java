@@ -32,11 +32,11 @@ public class Legesystem{
             if(info[1].compareTo("Pasienter") == 0){
                 while(scanner.hasNextLine()) {
                     innlest = scanner.nextLine();
-                    String[] inf = innlest.split(" ");
-                    pasienter.leggTil(new Pasient(inf[0], inf[1]));
                     if(innlest.charAt(0) == '#'){
-                        break;
+                      break;
                     }
+                    String[] inf = innlest.split(", ");
+                    pasienter.leggTil(new Pasient(inf[0], inf[1]));
                 }
             }
             //Legger inn Legemidlene
@@ -130,7 +130,6 @@ public class Legesystem{
         System.out.println("9: Meny");
         System.out.println("0: Avslutt");
         System.out.println();
-        System.out.println(resepter);
     }
     public String errorMsg() {
         return "Error: Input has to be an integer.";
@@ -148,7 +147,7 @@ public class Legesystem{
                 e.errorMsg();
             }*/
             switch(valg) {
-                case 1: System.out.println("Skriver ut fullstendig oversikt.");
+                case 1: System.out.println("Fullstending oversikt.");
                         skrivUt();  break;
                 case 2: System.out.println("Opprett eller legg til nye elemeter.");
                         endreTing(); break;
@@ -165,6 +164,37 @@ public class Legesystem{
     }
     public void skrivUt() {
         //Prints out all elements, doctors prints out in alphabetical order, use compareTo().
+        pasienter.iterator();
+        legemidler.iterator();
+        leger.iterator();
+        resepter.iterator();
+        System.out.println();
+        System.out.println("Pasienter:");
+        for (Pasient e : pasienter) {
+            System.out.println(e.navn + ", " + e.foedselsnummer + ", ID: " + e.getID());
+        }
+        System.out.println();
+        System.out.println("Legemidler:");
+        for (Legemiddel e : legemidler) {
+            System.out.println(e.hentNavn() + ", " + e.hentPris() + ", " + e.hentVirkestoff());
+        }
+        System.out.println();
+        System.out.println("Leger:");
+        ArrayList<String> legeNavn = new ArrayList<String>();
+        for (Lege e : leger) {
+            legeNavn.add(e.hentNavn());
+        }
+        Collections.sort(legeNavn);
+        for (String e : legeNavn) {
+            System.out.println(e);
+        }
+        System.out.println();
+        System.out.println("Resepter:");
+        for (Resept e : resepter) {
+            System.out.println(e.hentLegemiddel().hentNavn() + ", " + e.hentLege().hentNavn() + ", PasientID: " + e.hentPasientID() + ", Reit: " + e.hentReit());
+        }
+
+
     }
     public void endreTing() {
         //Adds either lege, pasient, legemiddel or resept(through lege skrivResept()) (if function)
