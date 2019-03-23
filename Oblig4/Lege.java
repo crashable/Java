@@ -16,6 +16,7 @@ public class Lege<T extends Comparable<Resept>> {
     return legeNavn;
   }
   public Resept skrivResept(Legemiddel legemiddel, Pasient pasient, int reit) throws UlovligUtskrift {
+
     if(legemiddel instanceof PreparatA) {
       throw new UlovligUtskrift(this, legemiddel);
     }

@@ -5,6 +5,7 @@ public class Militaerresepter extends HvitResept{
     this.pasient = p;
     this.reit = rit;
     this.price = 0;
+    this.pasientID = p.getID();
     this.ID = counter;
     counter++;
   }

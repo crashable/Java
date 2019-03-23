@@ -5,6 +5,7 @@ public class Blaaresepter extends Resept {
     this.pasient = p;
     this.reit = rit;
     this.price = lm.hentPris() * 0.25;
+    this.pasientID = p.getID();
     this.ID = counter;
     counter++;
   }
