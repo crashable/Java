@@ -205,6 +205,105 @@ public class Legesystem{
         //Any errors should be informed.
         //Use iterator to look for info in lists.
         //Exit back to menu if wrong input, NumberFormatException.
+        System.out.println("1. Lege, 2. pasient, 3. legemiddel eller 4. resept? ?");
+        Scanner scanner = new Scanner(System.in);
+        int valg;
+        System.out.print("> ");
+        valg = scanner.nextInt();
+        String info;
+        switch(valg) {
+            case 1: System.out.println("Ny lege.");
+                    System.out.println("Skriv inn legens navn: ");
+                    info = scanner.next();
+                    leger.leggTil(new Lege(info));
+                    break;
+            case 2: System.out.println("Ny pasient.");
+                    System.out.println("Skriv inn pasientens navn: ");
+                    String navn = scanner.next();
+                    System.out.println("Foedselsnummer: ");
+                    String fds = scanner.next();
+                    pasienter.leggTil(new Pasient(navn, fds));
+                    break;
+            case 3: System.out.println("Nytt legemiddel.");
+                    System.out.println("Hvilken type, 1. a, 2. b eller c?");
+                    info = scanner.next();
+                    switch(info) {
+                        case "a": System.out.println("Skriv i form: navn, pris, virkestoff, styrke");
+                                  info = scanner.next();
+                                  String[] inf = info.split(", ");
+                                  legemidler.leggTil(new PreparatA(inf[0], Double.parseDouble(inf[1]), Double.parseDouble(inf[2]), Integer.parseInt(inf[3])));
+                                  break;
+                        case "b": System.out.println("Skriv i form: navn, pris, virkestoff, styrke");
+                                  info = scanner.next();
+                                  inf = info.split(", ");
+                                  legemidler.leggTil(new PreparatB(inf[0], Double.parseDouble(inf[1]), Double.parseDouble(inf[2]), Integer.parseInt(inf[3])));
+                                  break;
+                        case "c": System.out.println("Skriv i form: navn, pris, virkestoff");
+                                  info = scanner.next();
+                                  inf = info.split(", ");
+                                  legemidler.leggTil(new PreparatC(inf[0], Double.parseDouble(inf[1]), Double.parseDouble(inf[2])));
+                                  break;
+                    }
+                    System.out.println(); break;
+            case 4: System.out.println("Ny resept");
+                    System.out.println("Hvilket legemiddel?");
+                    for (Legemiddel e : legemidler) {
+                        System.out.println(e.hentId() + ": " + e.hentNavn());
+                    }
+                    Legemiddel legemiddel = null;
+                    System.out.print("> ");
+                    valg = scanner.nextInt();
+                    switch(valg) {
+                        case 9: System.out.println("Tilbake til meny.");
+                                System.out.println(); break;
+                        default: System.out.println();
+                                legemiddel = legemidler.hent(valg);
+                                System.out.println("Valgt legemiddel: " + legemiddel.hentNavn());
+                                break;
+                         }
+                    System.out.println("Hvilken lege?");
+                    for (Lege e : leger) {
+                        System.out.println(e.getID() + ": " + e.hentNavn());
+                    }
+                    Lege lege = null;
+                    System.out.print("> ");
+                    valg = scanner.nextInt();
+                    switch(valg) {
+                      case 9: System.out.println("Tilbake til meny.");
+                              System.out.println(); break;
+                      default: System.out.println();
+                              lege = leger.hent(valg);
+                              System.out.println("Valgt lege: " + lege.hentNavn());
+                              break;
+                    }
+                    System.out.println("Hvilken pasient?");
+                    for (Pasient e : pasienter) {
+                        System.out.println(e.getID() + ": " + e.navn);
+                    }
+                    Pasient pasient = null;
+                    System.out.print("> ");
+                    valg = scanner.nextInt();
+                    switch(valg) {
+                        case 9: System.out.println("Tilbake til meny.");
+                            System.out.println(); break;
+                        default: System.out.println();
+                            pasient = pasienter.hent(valg);
+                            System.out.println("Valgt pasient: " + pasient.navn);
+                            break;
+                    }
+                    System.out.println("Hvor mange reit?");
+                    System.out.print("> ");
+                    valg = scanner.nextInt();
+                    try {
+                        resepter.leggTil(lege.skrivResept(legemiddel, pasient, valg));
+                    } catch(UlovligUtskrift e) {
+                        System.out.println(e.getMessage());
+                    }
+            case 9: System.out.println("Tilbake til meny.");
+                    System.out.println(); break;
+            default: System.out.println("Du tastet feil");
+                    break;
+        }
     }
 
     public void brukResept() {
@@ -252,26 +351,46 @@ public class Legesystem{
     public void statistikk() {
         //Totalt antall utskrevne resepter på vanedannende legemidler.
         int ant = 0;
+        System.out.println();
         for (Legemiddel e : legemidler) {
             if (e instanceof PreparatB) {
                 ant++;
             }
         }
-        System.out.println("Totalt antall utskrevne resepter pa vaanedannende legemidler: " + ant);
+        System.out.println("Totalt antall utskrevne resepter paa vaanedannende legemidler: " + ant);
         //Totalt antall utskrevne resepter på narkotiske legemidler.
         for (Legemiddel e : legemidler) {
             if (e instanceof PreparatA) {
                 ant++;
             }
         }
-        System.out.println("Totalt antall utskrevne resepter pa vaanedannende legemidler: " + ant);
+        System.out.println("Totalt antall utskrevne resepter paa narkotiske legemidler: " + ant);
         //Statistikk om mulig misbruk av narkotika skal vises på følgende måte:
           //List opp navnene på alle leger (i alfabetisk rekkefølge) som har skrevet ut
             //minst en resept på narkotiske legemidler, og antallet slike resepter per lege
-        System.out.println("Leger som her skrevet ut resepter på narkotiske legemidler: ");
-        
-          //List opp navnene på alle pasienter som har minst en gyldig resept på
-            //narkotiske legemidler, og for disse, skriv ut antallet per pasient.
+        //List them by the doctor part in the prescription function.
+        System.out.println("Leger som har skrevet ut resepter paa narkotiske legemidler:");
+        ArrayList<String> legeNavn = new ArrayList<String>();
+        for (Resept e : resepter) {
+            if (e.hentLegemiddel() instanceof PreparatA) {
+                legeNavn.add(e.hentLege().hentNavn() + " (" + e.hentLege().hentAnt() + ")");
+            }
+        }
+        Collections.sort(legeNavn);
+        for (String e : legeNavn) {
+            System.out.println(e);
+        }
+        //List opp navnene på alle pasienter som har minst en gyldig resept på
+        //narkotiske legemidler, og for disse, skriv ut antallet per pasient.
+        System.out.println("Pasienter med gyldige resepter paa narkotiske legemidler: ");
+        //ArrayList<String> legeNavn = new ArrayList<String>();
+        int antR = 0;
+        for (Resept e : resepter) {
+            if (e.hentLegemiddel() instanceof PreparatA) {
+                //Dunno how to get the patients amount of prescriptions.
+                System.out.println(e.hentPasient().navn + " (" + e.hentLege().hentAnt() + ")");
+            }
+        }
 
     }
 }
