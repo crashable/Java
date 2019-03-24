@@ -16,6 +16,9 @@ public class Lege<T extends Comparable<Resept>> {
   public String hentNavn() {
     return legeNavn;
   }
+  public int hentAnt() {
+    return antResept;
+  }
   public Resept skrivResept(Legemiddel legemiddel, Pasient pasient, int reit) throws UlovligUtskrift {
 
     if(legemiddel instanceof PreparatA) {
