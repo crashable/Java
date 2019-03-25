@@ -72,12 +72,12 @@ public class Legesystem{
                     if(innlest.charAt(0) == '#'){
                         break;
                     }
-                    info = innlest.split(", ");
-                    int kontrollid = Integer.parseInt(info[1]);
+                    String[] infos = innlest.split(", ");
+                    int kontrollid = Integer.parseInt(infos[1]);
                     if(kontrollid == 0){
-                        leger.leggTil(new Lege(info[0]));
+                        leger.leggTil(new Lege(infos[0]));
                     }else{
-                        leger.leggTil(new Spesialist(info[0], kontrollid));
+                        leger.leggTil(new Spesialist(infos[0], kontrollid));
                     }
                 }
 
@@ -280,9 +280,9 @@ public class Legesystem{
                     switch(valg) {
                         case 9: System.out.println("Tilbake til meny.");
                                 System.out.println(); break;
-                        default: System.out.println();
-                                legemiddel = legemidler.hent(valg);
+                        default: legemiddel = legemidler.hent(valg);
                                 System.out.println("Valgt legemiddel: " + legemiddel.hentNavn());
+                                System.out.println();
                                 break;
                          }
                     System.out.println("Hvilken lege?");
@@ -296,10 +296,9 @@ public class Legesystem{
                     switch(valg) {
                       case 9: System.out.println("Tilbake til meny.");
                               System.out.println(); break;
-                      default: System.out.println();
-                              System.out.println(leger.hent(valg));
-                              lege = leger.hent(valg);
+                      default: lege = leger.hent(valg);
                               System.out.println("Valgt lege: " + lege.hentNavn());
+                              System.out.println();
                               break;
                     }
                     System.out.println("Hvilken pasient?");
@@ -313,9 +312,9 @@ public class Legesystem{
                     switch(valg) {
                         case 9: System.out.println("Tilbake til meny.");
                             System.out.println(); break;
-                        default: System.out.println();
-                            pasient = pasienter.hent(valg);
+                        default: pasient = pasienter.hent(valg);
                             System.out.println("Valgt pasient: " + pasient.navn);
+                            System.out.println();
                             break;
                     }
                     System.out.println("Hvor mange reit?");
