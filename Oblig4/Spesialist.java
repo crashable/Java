@@ -3,7 +3,6 @@ public class Spesialist extends Lege implements Godkjenningsfritak {
   public Spesialist(String lnvn, int kID) {
     super(lnvn);
     this.kontrollID = kID;
-    counter++;
   }
   public int hentKontrollID() {
     return kontrollID;
