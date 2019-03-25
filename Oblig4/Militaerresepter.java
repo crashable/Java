@@ -7,6 +7,7 @@ public class Militaerresepter extends HvitResept{
     this.price = 0;
     this.pasientID = p.getID();
     this.ID = counter;
+    pasient.addResept(this);
     counter++;
   }
   public String farge() {

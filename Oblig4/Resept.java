@@ -7,6 +7,8 @@ public abstract class Resept {
   int pasientID;
   int reit;
   double price;
+  //pasient.addResept(this);
+
 
   public int hentID() {
     return ID;

@@ -7,6 +7,7 @@ public class Blaaresepter extends Resept {
     this.price = lm.hentPris() * 0.25;
     this.pasientID = p.getID();
     this.ID = counter;
+    pasient.addResept(this);
     counter++;
   }
   public String farge() {

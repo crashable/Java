@@ -119,6 +119,7 @@ public class Legesystem{
             }
         }
     }
+
     public void skrivMeny(){
         System.out.println();
         System.out.println("--- MENY ---");
@@ -355,7 +356,7 @@ public class Legesystem{
                     break;
         }
         System.out.println("Hvilken resept vil du bruke?");
-        for (Resept e : resepter) {
+        for (Resept e : pasient.hentResepter()) {
             System.out.println(e.hentID() + ": " + e.hentLegemiddel().hentNavn() + "(Reit: " + e.hentReit() + ")");
         }
         Resept resept = null;
@@ -366,7 +367,7 @@ public class Legesystem{
             case 9: System.out.println("Tilbake til meny.");
                     System.out.println(); break;
             default: System.out.println();
-                    resept = resepter.hent(valg);
+                    resept = pasient.hentResepter().hent(valg);
                     System.out.println("Valgt resept: " + resept.hentLegemiddel().hentNavn());
                     if (resept.hentReit() == 0) {
                         System.out.println("Kunne ikke bruke resept paa " + resept.hentLegemiddel().hentNavn() + ". Ingen gjenvaerende reit.");

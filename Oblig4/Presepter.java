@@ -7,6 +7,7 @@ public class Presepter extends HvitResept {
     this.price = lm.hentPris();
     this.pasientID = p.getID();
     this.ID = counter;
+    pasient.addResept(this);
     counter++;
   }
   public double prisAaBetale() {
