@@ -141,10 +141,11 @@ public class Legesystem{
         skrivMeny();
         int valg;
         do {
-            System.out.print("Valg: ");
+            System.out.print("> ");
             valg = scanner.nextInt();
+            scanner.nextLine();
             /*try {
-                valg = scanner.nextInt();
+                 valg = scanner.nextInt();
             } catch(NumberFormatException e) {
                 e.errorMsg();
             }*/
@@ -205,41 +206,63 @@ public class Legesystem{
         //Any errors should be informed.
         //Use iterator to look for info in lists.
         //Exit back to menu if wrong input, NumberFormatException.
-        System.out.println("1. Lege, 2. pasient, 3. legemiddel eller 4. resept? ?");
+        System.out.println("1. Lege, 2. pasient, 3. legemiddel eller 4. resept?");
         Scanner scanner = new Scanner(System.in);
         int valg;
         System.out.print("> ");
         valg = scanner.nextInt();
+        scanner.nextLine();
         String info;
         switch(valg) {
             case 1: System.out.println("Ny lege.");
-                    System.out.println("Skriv inn legens navn: ");
+                    System.out.print("Er legen en spesialist? y/n: \t");
                     info = scanner.next();
-                    leger.leggTil(new Lege(info));
+                    scanner.nextLine();
+                    switch(info) {
+                        case "y":
+                            System.out.print("Skriv inn legens navn og ID: \t");
+                            String infos = scanner.nextLine();
+                            String[] inf = infos.split(", ");
+                            leger.leggTil(new Spesialist(inf[0], Integer.parseInt(inf[1])));
+                            break;
+                        case "n":
+                            System.out.print("Skriv inn legens navn: \t");
+                            info = scanner.nextLine();
+                            leger.leggTil(new Lege(info));
+                            break;
+                    }
                     break;
+                    /*int("Skriv inn legens navn: \t");
+                    info = scanner.nextLine();
+                    leger.leggTil(new Lege(info));
+                    break;*/
             case 2: System.out.println("Ny pasient.");
-                    System.out.println("Skriv inn pasientens navn: ");
-                    String navn = scanner.next();
-                    System.out.println("Foedselsnummer: ");
-                    String fds = scanner.next();
+                    System.out.print("Skriv inn pasientens navn: \t");
+                    String navn = scanner.nextLine();
+                    System.out.print("Foedselsnummer: \t");
+                    String fds = scanner.nextLine();
                     pasienter.leggTil(new Pasient(navn, fds));
                     break;
             case 3: System.out.println("Nytt legemiddel.");
-                    System.out.println("Hvilken type, 1. a, 2. b eller c?");
+                    System.out.print("Hvilken type, 1. a, 2. b eller c? \t");
                     info = scanner.next();
+                    scanner.nextLine();
                     switch(info) {
                         case "a": System.out.println("Skriv i form: navn, pris, virkestoff, styrke");
-                                  info = scanner.next();
+                                  System.out.print("> ");
+                                  info = scanner.nextLine();
                                   String[] inf = info.split(", ");
                                   legemidler.leggTil(new PreparatA(inf[0], Double.parseDouble(inf[1]), Double.parseDouble(inf[2]), Integer.parseInt(inf[3])));
                                   break;
                         case "b": System.out.println("Skriv i form: navn, pris, virkestoff, styrke");
-                                  info = scanner.next();
+                                System.out.print("> ");
+                                  info = scanner.nextLine();
                                   inf = info.split(", ");
                                   legemidler.leggTil(new PreparatB(inf[0], Double.parseDouble(inf[1]), Double.parseDouble(inf[2]), Integer.parseInt(inf[3])));
                                   break;
                         case "c": System.out.println("Skriv i form: navn, pris, virkestoff");
-                                  info = scanner.next();
+                                  System.out.print("> ");
+                                  info = scanner.nextLine();
                                   inf = info.split(", ");
                                   legemidler.leggTil(new PreparatC(inf[0], Double.parseDouble(inf[1]), Double.parseDouble(inf[2])));
                                   break;
@@ -253,6 +276,7 @@ public class Legesystem{
                     Legemiddel legemiddel = null;
                     System.out.print("> ");
                     valg = scanner.nextInt();
+                    scanner.nextLine();
                     switch(valg) {
                         case 9: System.out.println("Tilbake til meny.");
                                 System.out.println(); break;
@@ -268,10 +292,12 @@ public class Legesystem{
                     Lege lege = null;
                     System.out.print("> ");
                     valg = scanner.nextInt();
+                    scanner.nextLine();
                     switch(valg) {
                       case 9: System.out.println("Tilbake til meny.");
                               System.out.println(); break;
                       default: System.out.println();
+                              System.out.println(leger.hent(valg));
                               lege = leger.hent(valg);
                               System.out.println("Valgt lege: " + lege.hentNavn());
                               break;
@@ -283,6 +309,7 @@ public class Legesystem{
                     Pasient pasient = null;
                     System.out.print("> ");
                     valg = scanner.nextInt();
+                    scanner.nextLine();
                     switch(valg) {
                         case 9: System.out.println("Tilbake til meny.");
                             System.out.println(); break;
@@ -294,6 +321,7 @@ public class Legesystem{
                     System.out.println("Hvor mange reit?");
                     System.out.print("> ");
                     valg = scanner.nextInt();
+                    scanner.nextLine();
                     try {
                         resepter.leggTil(lege.skrivResept(legemiddel, pasient, valg));
                     } catch(UlovligUtskrift e) {
@@ -317,6 +345,8 @@ public class Legesystem{
         Pasient pasient = null;
         System.out.print("> ");
         valg = scanner.nextInt();
+        scanner.nextLine();
+
         switch(valg) {
             case 9: System.out.println("Tilbake til meny.");
                     System.out.println(); break;
@@ -332,6 +362,7 @@ public class Legesystem{
         Resept resept = null;
         System.out.print("> ");
         valg = scanner.nextInt();
+        scanner.nextLine();
         switch(valg) {
             case 9: System.out.println("Tilbake til meny.");
                     System.out.println(); break;
