@@ -3,6 +3,7 @@ public class Pasient {
   String foedselsnummer;
   int ID = 0;
   static int counter = 0;
+  static int antNark = 0;
 
   public Pasient(String nvn, String bursdag) {
     navn = nvn;
@@ -13,5 +14,9 @@ public class Pasient {
 
   public int getID() {
     return ID;
+  }
+
+  public void antNarkRes() {
+    antNark++;
   }
 }

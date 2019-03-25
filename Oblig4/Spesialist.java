@@ -10,6 +10,7 @@ public class Spesialist extends Lege implements Godkjenningsfritak {
   }
   public Resept skrivResept(Legemiddel legemiddel, Pasient pasient, int reit) throws UlovligUtskrift {
     if (legemiddel instanceof PreparatA) {
+      pasient.antNarkRes();
       antResept++;
     }
     return new Blaaresepter(legemiddel, this, pasient, reit);
