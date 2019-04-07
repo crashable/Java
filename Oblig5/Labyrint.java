@@ -11,7 +11,7 @@ public class Labyrint {
   int sizeCol;
   int sizeRow;
   Rute[][] lab;
-  //public static String rutevei = "LALA";
+  public static String rutevei = "";
   public static ArrayList<String> aapninger = new ArrayList<String>();
   private Labyrint(Rute[][] labbe, int rad, int kol) {
     lab = labbe;
@@ -90,7 +90,8 @@ public class Labyrint {
   }
 
   public ArrayList<String> finnUtveiFra(int kol, int rad) {
-    System.out.println(getRute(rad, kol).finnUtvei());
+    getRute(rad, kol).finnUtvei();
+    System.out.println(rutevei);
     return aapninger;
 
   }

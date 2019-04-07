@@ -24,12 +24,12 @@ public class Rute {
   }
 
   public String info() {
-    return (rad + " " + kolonne);
+    return (rad + "-" + kolonne);
   }
 
-  public String gaa(String dir, String road)   {
+  public void gaa(String dir, String road)   {
     //System.out.println(info());
-    road += (info() + "->");
+    road += (info() + " -> ");
     if (dir!="south") {
       south.gaa("north", road);
     }
@@ -42,12 +42,11 @@ public class Rute {
     if (dir!="east") {
       east.gaa("west", road);
     }
-    return road;
   }
 
-  public String finnUtvei() {
+  public void finnUtvei() {
     //System.out.println(lab.rutevei);
-    return gaa("", "Rutevei: ");
+    gaa("", "Rutevei: ");
 
   }
 }
