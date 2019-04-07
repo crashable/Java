@@ -11,7 +11,7 @@ public class Labyrint {
   int sizeCol;
   int sizeRow;
   Rute[][] lab;
-  public static Lenkeliste<String> vei;
+  Lenkeliste<String> vei;
   public static String rutevei = "";
   public static ArrayList<String> aapninger = new ArrayList<String>();
   private Labyrint(Rute[][] labbe, int rad, int kol) {
