@@ -6,11 +6,15 @@ public class Rute {
   (denne skal følge filformatet som beskrevet lenger opp!). Det skal ikke være mulig å opprette
   et objekt av klassen Rute, kun av subklassene.
   */
-  int kolonne;
   int rad;
+  int kolonne;
   Labyrint lab;
   int[] info = new int[2];
   char stuff;
+  Rute north;
+  Rute south;
+  Rute west;
+  Rute east;
 
   public char tilTegn() {
     if (this instanceof HvitRute) {
@@ -19,7 +23,11 @@ public class Rute {
     return '.';
   }
 
-  public int[] space() {
+public void naboRuter() {
+
+}
+
+  public int[] info() {
     info[0] = kolonne;
     info[1] = rad;
     return info;

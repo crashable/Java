@@ -11,19 +11,19 @@ public class Labyrint {
   int sizeCol;
   int sizeRow;
   Rute[][] lab;
-  public void Labyrint(int a, int b) {
-    lab = new Rute[a][b];
-    sizeRow = a;
-    sizeCol = b;
+  public Labyrint(Rute[][] labbe, int rad, int kol) {
+    lab = labbe;
+    sizeRow = rad;
+    sizeCol = kol;
   }
 
-  public void lagLab(int a, int b, char c) {
+  /*public static Rute lagLab(char c) {
     if (c == '#') {
-      lab[a][b] = new HvitRute();
-    } else if(c == '.') {
-      lab[a][b] = new SortRute();
-    }
+      return new HvitRute();
+    } else {
+      return new SortRute();
   }
+}*/
 
   public static Labyrint lesFraFil(File fil) {
     Scanner scanner = null;
@@ -39,25 +39,34 @@ public class Labyrint {
     String[] info = innlest.split(" ");
     szRow = Integer.parseInt(info[0]);
     szCol = Integer.parseInt(info[1]);
-    Labyrint labbe = new Labyrint();
-    labbe.Labyrint(szCol, szRow);
-    while(scanner.hasNextLine()) {
-      for (int i=0; i<szRow; i++) {
-        String innlests = scanner.nextLine();
-        for (int j=0; j<szCol; i++) {
-          labbe.lagLab(i, j, innlests.charAt(j));
+    Rute[][] labbe = new Rute[szRow][szCol];
+    //Labyrint labbe = new Labyrint();
+    //labbe.Labyrint();
+    //while(scanner.hasNextLine()) {
+    Labyrint lab = null;
+    for (int row=0; row<szRow; row++) {
+      String innlests = scanner.nextLine();
+      for (int col=0; col<szCol; col++) {
+        //labbe.lagLab(row, col, innlests.charAt(col));
+        if (innlests.charAt(col) == '#') {
+          labbe[row][col] = new HvitRute(row, col, lab);
+        } else {
+          labbe[row][col] = new SortRute(row, col, lab);
         }
+    //    }
       }
+      System.out.println(innlests);
     }
-    return labbe;
+    lab = new Labyrint(labbe, szRow, szCol);
+    return lab;
   }
 
   public String toString() {
     String one;
-    for (int i=0; i<sizeCol; i++) {
-      for (int j=0; j<sizeRow; j++) {
-        one = lab[i][j] + " ";
-        if (j == sizeRow) {
+    for (int i=0; i<sizeRow; i++) {
+      for (int j=0; j<sizeCol; j++) {
+        one = lab[i][j].tilTegn() + " ";
+        if (j == sizeCol) {
           one += "/n";
         }
       }
