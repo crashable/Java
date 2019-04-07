@@ -91,7 +91,7 @@ public class Labyrint {
 
   public ArrayList<String> finnUtveiFra(int kol, int rad) {
     getRute(rad, kol).finnUtvei();
-    System.out.println(rutevei);
+    //System.out.println(rutevei);
     return aapninger;
 
   }
