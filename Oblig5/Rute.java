@@ -46,7 +46,7 @@ public class Rute {
 
   public void finnUtvei() {
     //System.out.println(lab.rutevei);
-    gaa("", "Rutevei: ");
+    gaa("", "");
 
   }
 }
