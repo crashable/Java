@@ -41,7 +41,11 @@ public class Labyrint {
       for (int col=0; col<szCol; col++) {
         //labbe.lagLab(row, col, innlests.charAt(col));
         if (innlests.charAt(col) == '.') {
-          labbe[row][col] = new HvitRute(row, col, lab);
+          if (row==0 || row==szRow-1 || col==0 || col==szCol-1) {
+            labbe[row][col] = new Aapning(row, col, lab);
+          } else {
+            labbe[row][col] = new HvitRute(row, col, lab);
+          }
         } else {
           labbe[row][col] = new SortRute(row, col, lab);
         }
