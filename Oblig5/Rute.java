@@ -27,23 +27,27 @@ public class Rute {
     return (rad + " " + kolonne);
   }
 
-  public void gaa(String a)   {
-    System.out.println(info());
-    if (a!="south") {
-      south.gaa("north");
+  public String gaa(String dir, String road)   {
+    //System.out.println(info());
+    road += (info() + "->");
+    if (dir!="south") {
+      south.gaa("north", road);
     }
-    if (a!="north") {
-      north.gaa("south");
+    if (dir!="north") {
+      north.gaa("south", road);
     }
-    if (a!="west") {
-      west.gaa("east");
+    if (dir!="west") {
+      west.gaa("east", road);
     }
-    if (a!="east") {
-      east.gaa("west");
+    if (dir!="east") {
+      east.gaa("west", road);
     }
+    return road;
   }
 
-  public void finnUtvei() {
-    gaa("");
+  public String finnUtvei() {
+    //System.out.println(lab.rutevei);
+    return gaa("", "Rutevei: ");
+
   }
 }

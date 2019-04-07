@@ -9,6 +9,8 @@ public class Test {
     //System.out.println(lab.getRute(4,0).north);
     //lab.getRute(1,1).gaa("");
     //lab.getRute(3,5).finnUtvei();
-    lab.finnUtveiFra(5,3);
+    System.out.println(lab.finnUtveiFra(1,5));
+    //System.out.println(lab.aapninger);
+    //System.out.println(lab.rutevei);
   }
 }

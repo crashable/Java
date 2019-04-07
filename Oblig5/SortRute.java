@@ -5,7 +5,7 @@ public class SortRute extends Rute {
     lab = labbe;
   }
 
-  public void gaa(String a) {
-    return;
+  public String gaa(String a, String road) {
+    return road;
   }
 }
