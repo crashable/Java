@@ -11,19 +11,11 @@ public class Labyrint {
   int sizeCol;
   int sizeRow;
   Rute[][] lab;
-  public Labyrint(Rute[][] labbe, int rad, int kol) {
+  private Labyrint(Rute[][] labbe, int rad, int kol) {
     lab = labbe;
     sizeRow = rad;
     sizeCol = kol;
   }
-
-  /*public static Rute lagLab(char c) {
-    if (c == '#') {
-      return new HvitRute();
-    } else {
-      return new SortRute();
-  }
-}*/
 
   public static Labyrint lesFraFil(File fil) {
     Scanner scanner = null;
@@ -48,29 +40,46 @@ public class Labyrint {
       String innlests = scanner.nextLine();
       for (int col=0; col<szCol; col++) {
         //labbe.lagLab(row, col, innlests.charAt(col));
-        if (innlests.charAt(col) == '#') {
+        if (innlests.charAt(col) == '.') {
           labbe[row][col] = new HvitRute(row, col, lab);
         } else {
           labbe[row][col] = new SortRute(row, col, lab);
         }
     //    }
       }
-      System.out.println(innlests);
+    }
+    for (int row=0; row<szRow; row++) {
+      for (int col=0; col<szCol; col++) {
+        if (row>0) {
+          labbe[row][col].north = labbe[row-1][col];
+        }
+        if (col>0) {
+          labbe[row][col].west = labbe[row][col-1];
+        }
+        if (row<szRow-1) {
+          labbe[row][col].south = labbe[row+1][col];
+        }
+        if (col<szCol-1) {
+          labbe[row][col].east = labbe[row][col+1];
+        }
+      }
     }
     lab = new Labyrint(labbe, szRow, szCol);
     return lab;
   }
 
+  public Rute getRute(int a, int b) {
+    return lab[a][b];
+  }
+
   public String toString() {
-    String one;
+    String one = "";
     for (int i=0; i<sizeRow; i++) {
       for (int j=0; j<sizeCol; j++) {
-        one = lab[i][j].tilTegn() + " ";
-        if (j == sizeCol) {
-          one += "/n";
-        }
+        one += lab[i][j].tilTegn() + "";
       }
+      one += "\n";
     }
-    return "yo";
+    return one;
   }
 }

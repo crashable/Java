@@ -18,9 +18,9 @@ public class Rute {
 
   public char tilTegn() {
     if (this instanceof HvitRute) {
-      return '#';
+      return '.';
     }
-    return '.';
+    return '#';
   }
 
 public void naboRuter() {
