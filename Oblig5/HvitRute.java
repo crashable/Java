@@ -7,4 +7,6 @@ public class HvitRute extends Rute {
     kolonne = kol;
     lab = labbe;
   }
+
+  
 }

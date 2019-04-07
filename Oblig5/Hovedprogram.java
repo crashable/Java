@@ -15,18 +15,18 @@ class Oblig5 {
         }
         File fil = new File(filnavn);
         Labyrint l = null;
-        try {
+        /*try {
             l = Labyrint.lesFraFil(fil);
         } catch (FileNotFoundException e) {
             System.out.printf("FEIL: Kunne ikke lese fra '%s'\n", filnavn);
             System.exit(1);
-        }
+        }*/
 
         // les start-koordinater fra standard input
         Scanner inn = new Scanner(System.in);
         System.out.println("Skriv inn koordinater <kolonne> <rad> ('a' for aa avslutte)");
         String[] ord = inn.nextLine().split(" ");
-        while (!ord[0].equals("a")) {
+        /*while (!ord[0].equals("a")) {
 
             try {
                 int startKol = Integer.parseInt(ord[0]);
@@ -47,6 +47,6 @@ class Oblig5 {
 
             System.out.println("Skriv inn nye koordinater ('a' for aa avslutte)");
             ord = inn.nextLine().split(" ");
-        }
+        }*/
     }
 }

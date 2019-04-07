@@ -3,4 +3,9 @@ public class Aapning extends HvitRute {
   public Aapning(int r, int kol, Labyrint labbe) {
     super(r, kol, labbe);
   }
+
+  public void gaa(String a) {
+    System.out.println("Reached ending.");
+    System.exit(1);
+  }
 }

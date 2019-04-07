@@ -7,5 +7,6 @@ public class Test {
     Labyrint lab = Labyrint.lesFraFil(fil);
     //System.out.println(lab);
     //System.out.println(lab.getRute(4,0).north);
+    lab.getRute(6,7).gaa("");
   }
 }

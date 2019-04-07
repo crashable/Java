@@ -4,4 +4,8 @@ public class SortRute extends Rute {
     kolonne = kol;
     lab = labbe;
   }
+
+  public void gaa(String a) {
+    return;
+  }
 }

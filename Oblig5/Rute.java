@@ -23,13 +23,23 @@ public class Rute {
     return '#';
   }
 
-public void naboRuter() {
+  public void info() {
+    System.out.println(rad + " " + kolonne);
+  }
 
-}
-
-  public int[] info() {
-    info[0] = kolonne;
-    info[1] = rad;
-    return info;
+  public void gaa(String a)   {
+    //info();
+    if (a!="south") {
+      south.gaa("north");
+    }
+    if (a!="north") {
+      north.gaa("south");
+    }
+    if (a!="west") {
+      west.gaa("east");
+    }
+    if (a!="east") {
+      east.gaa("west");
+    }
   }
 }
