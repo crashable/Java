@@ -23,12 +23,12 @@ public class Rute {
     return '#';
   }
 
-  public void info() {
-    System.out.println(rad + " " + kolonne);
+  public String info() {
+    return (rad + " " + kolonne);
   }
 
   public void gaa(String a)   {
-    //info();
+    System.out.println(info());
     if (a!="south") {
       south.gaa("north");
     }
@@ -41,5 +41,9 @@ public class Rute {
     if (a!="east") {
       east.gaa("west");
     }
+  }
+
+  public void finnUtvei() {
+    gaa("");
   }
 }

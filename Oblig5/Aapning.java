@@ -5,7 +5,11 @@ public class Aapning extends HvitRute {
   }
 
   public void gaa(String a) {
-    System.out.println("Reached ending.");
-    System.exit(1);
+    System.out.println("Reached an ending at:");
+    System.out.println(info());
+    String str = info();
+    lab.addTo(str);
+    //lab.aapninger.add(info());
+    //System.exit(1);
   }
 }
