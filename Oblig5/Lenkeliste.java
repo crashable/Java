@@ -151,6 +151,7 @@ public class Lenkeliste<T> implements Liste<T> {
     Node p = start;
     for (int i=0; i<size; i++) {
       System.out.println(p.data);
+      p = p.neste;
     }
     //System.out.println(p.data);
   }
