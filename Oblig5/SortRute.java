@@ -5,7 +5,11 @@ public class SortRute extends Rute {
     lab = labbe;
   }
 
-  public void gaa(String a, String road) {
+  public void gaa(String dir, String road) {
     return;
   }
+  public char tilTegn() {
+    return '#';
+  }
+
 }

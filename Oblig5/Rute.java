@@ -1,4 +1,4 @@
-public class Rute {
+public abstract class Rute {
   /*Klassen Rute skal ta vare på sine koordinater (kolonne og rad), og skal også ha en
   referanse til labyrinten den er en del av. I tillegg skal klassen ha referanser til sine eventuelle
   nabo-ruter (nord/syd/vest/øst).
@@ -16,37 +16,16 @@ public class Rute {
   Rute west;
   Rute east;
 
-  public char tilTegn() {
-    if (this instanceof HvitRute) {
-      return '.';
-    }
-    return '#';
-  }
+  public abstract char tilTegn();
 
   public String info() {
     return (rad + "-" + kolonne);
   }
 
-  public void gaa(String dir, String road)   {
-    //System.out.println(info());
-    road += (info() + " -> ");
-    if (dir!="south") {
-      south.gaa("north", road);
-    }
-    if (dir!="north") {
-      north.gaa("south", road);
-    }
-    if (dir!="west") {
-      west.gaa("east", road);
-    }
-    if (dir!="east") {
-      east.gaa("west", road);
-    }
-  }
+  public abstract void gaa(String dir, String road);
 
   public void finnUtvei() {
     //System.out.println(lab.rutevei);
     gaa("", "");
-
   }
 }

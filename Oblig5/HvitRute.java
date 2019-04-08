@@ -8,5 +8,25 @@ public class HvitRute extends Rute {
     lab = labbe;
   }
 
-  
+  public char tilTegn() {
+    return '.';
+  }
+
+  public void gaa(String dir, String road)   {
+    //System.out.println(info());
+    road += (info() + " -> ");
+    if (dir!="south") {
+      south.gaa("north", road);
+    }
+    if (dir!="north") {
+      north.gaa("south", road);
+    }
+    if (dir!="west") {
+      west.gaa("east", road);
+    }
+    if (dir!="east") {
+      east.gaa("west", road);
+    }
+  }
+
 }
