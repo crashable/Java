@@ -15,7 +15,7 @@ public class Test {
     //lab.getRute(1,1).gaa("");
     //lab.finnUtveiFra(2,1).print();
     //lab.finnUtvei();
-    Lenkeliste<String> test = lab.finnUtveiFra(1,1);
+    Stabel<String> test = lab.finnUtveiFra(1,1);
     //for (String e: test) {
     //  System.out.println(e);
     //}

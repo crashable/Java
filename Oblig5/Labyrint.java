@@ -11,7 +11,7 @@ public class Labyrint {
   int sizeCol;
   int sizeRow;
   Rute[][] lab;
-  Lenkeliste<String> vei;
+  Stabel<String> vei;
   public static String rutevei = "";
   public static ArrayList<String> aapninger = new ArrayList<String>();
   private Labyrint(Rute[][] labbe, int rad, int kol) {
@@ -79,10 +79,6 @@ public class Labyrint {
     return lab[a][b];
   }
 
-  public void legg(String str) {
-    vei.leggTil(str);
-  }
-
   public String toString() {
     String one = "";
     for (int i=0; i<sizeRow; i++) {
@@ -94,8 +90,12 @@ public class Labyrint {
     return one;
   }
 
-  public Lenkeliste<String> finnUtveiFra(int kol, int rad) {
-    vei = new Lenkeliste<String>();
+  public Stabel<String> finnUtveiFra(int kol, int rad) {
+    if (getRute(rad, kol).tilTegn() == '#') {
+      System.out.println("Kan ikke starte på en sort rute.");
+      return new Stabel<String>();
+    }
+    vei = new Stabel<String>();
     getRute(rad, kol).finnUtvei();
     //System.out.println(rutevei);
     String[] veizz = rutevei.split("YA");
@@ -103,7 +103,6 @@ public class Labyrint {
       vei.leggTil(e);
     }
     return vei;
-
   }
 
 }
