@@ -97,13 +97,11 @@ public class Labyrint {
   public Lenkeliste<String> finnUtveiFra(int kol, int rad) {
     vei = new Lenkeliste<String>();
     getRute(rad, kol).finnUtvei();
-    System.out.println(rutevei);
+    //System.out.println(rutevei);
     String[] veizz = rutevei.split("YA");
     for (String e : veizz) {
-      System.out.println(e);
       vei.leggTil(e);
     }
-    //vei.leggTil(rutevei);
     return vei;
 
   }
