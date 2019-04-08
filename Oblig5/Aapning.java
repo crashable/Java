@@ -5,12 +5,12 @@ public class Aapning extends HvitRute {
   }
 
   public void gaa(String dir, String road) {
-    road += info();
-    System.out.println("Reached an ending at:");
-    System.out.println(info());
+    road += info() + "YA";
+    /*System.out.println("Reached an ending at:");
+    System.out.println(info());*/
     lab.aapninger.add(info());
-    //lab.rutevei += road;
-    lab.legg(road);
+    lab.rutevei += road;
+    //lab.vei.leggTil(road);
     //System.exit(1);
   }
 

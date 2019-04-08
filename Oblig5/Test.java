@@ -19,7 +19,9 @@ public class Test {
     //for (String e: test) {
     //  System.out.println(e);
     //}
+    System.out.println("Sdf");
     test.print();
+    System.out.println("Sdf");
     System.out.println(lab.aapninger);
     //System.out.println(lab.rutevei);
   }

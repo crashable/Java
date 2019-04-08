@@ -152,6 +152,6 @@ public class Lenkeliste<T> implements Liste<T> {
     for (int i=0; i<size; i++) {
       System.out.println(p.data);
     }
-    System.out.println(p.data);
+    //System.out.println(p.data);
   }
 }
