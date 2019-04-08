@@ -9,7 +9,6 @@ public abstract class Rute {
   int rad;
   int kolonne;
   Labyrint lab;
-  int[] info = new int[2];
   char stuff;
   Rute north;
   Rute south;
@@ -19,7 +18,7 @@ public abstract class Rute {
   public abstract char tilTegn();
 
   public String info() {
-    return (rad + "-" + kolonne);
+    return ("(" + kolonne + ", " + rad + ")"); //WHy NOT ROW COL?? WHYYYYYY!
   }
 
   public abstract void gaa(String dir, String road);

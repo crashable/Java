@@ -150,7 +150,7 @@ public class Lenkeliste<T> implements Liste<T> {
   public void print() {
     Node p = start;
     for (int i=0; i<size; i++) {
-      System.out.print(p.data);
+      System.out.println(p.data);
     }
     System.out.println(p.data);
   }

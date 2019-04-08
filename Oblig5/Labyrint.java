@@ -11,7 +11,7 @@ public class Labyrint {
   int sizeCol;
   int sizeRow;
   Rute[][] lab;
-  Lenkeliste<String> vei;
+  Lenkeliste<String> vei = null;
   public static String rutevei = "";
   public static ArrayList<String> aapninger = new ArrayList<String>();
   private Labyrint(Rute[][] labbe, int rad, int kol) {
@@ -20,7 +20,7 @@ public class Labyrint {
     sizeCol = kol;
   }
 
-  public static Labyrint lesFraFil(File fil) {
+  public static Labyrint lesFraFil(File fil) throws FileNotFoundException {
     Scanner scanner = null;
     int szCol;
     int szRow;
@@ -93,11 +93,11 @@ public class Labyrint {
   public Lenkeliste<String> finnUtveiFra(int kol, int rad) {
     getRute(rad, kol).finnUtvei();
     vei = new Lenkeliste<String>();
-    String[] veizz = rutevei.split(" -> ");
-    for (String e : veizz) {
-      vei.leggTil(e);
-    }
-    //System.out.println(rutevei);
+    //String[] veizz = rutevei.split("YA");
+    //for (String e : veizz) {
+    //  vei.leggTil(e);
+    //}
+    vei.leggTil(rutevei);
     return vei;
 
   }

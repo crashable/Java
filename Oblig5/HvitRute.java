@@ -14,7 +14,7 @@ public class HvitRute extends Rute {
 
   public void gaa(String dir, String road)   {
     //System.out.println(info());
-    road += (info() + " -> ");
+    road += (info() + " --> ");
     if (dir!="south") {
       south.gaa("north", road);
     }

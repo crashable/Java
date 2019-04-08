@@ -9,7 +9,8 @@ public class Aapning extends HvitRute {
     /*System.out.println("Reached an ending at:");
     System.out.println(info());*/
     lab.aapninger.add(info());
-    lab.rutevei += road + "\n";
+    lab.rutevei = road;
+    //lab.vei.leggTil(road);
     //System.exit(1);
   }
 
